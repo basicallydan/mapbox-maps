@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A set of Web Components to create Mapbox Maps on the web">
+
+    <!-- Facebook Metatags -->
+<!--     <meta property="fb:app_id" content="1502439096643233">
+    <meta property="og:title" content="<voice-elements>">
+    <meta property="og:description" content="A couple of Web Components that can do amazing stuff using the Web Speech API.">
+    <meta property="og:url" content="http://zenorocha.github.io/voice-elements/">
+    <meta property="og:image" content="http://zenorocha.github.io/voice-elements/demo/fb.jpg"> -->
+
+    <title>&lt;mapbox-map&gt;</title>
+
+    <!-- Demo CSS -->
+<!--     <link rel="icon" href="https://github.global.ssl.fastly.net/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Slab">
+    <link rel="stylesheet" href="demo/demo.css"> -->
+
+    <!-- Importing Web Component's Polyfill -->
+    <script src="bower_components/platform/platform.js"></script>
+
+    <!-- Importing Custom Elements -->
+    <link rel="import" href="src/mapbox-map.html">
+
+    <style type="text/css">
+        mapbox-map {
+            width:500px;
+            height:500px;
+        }
+    </style>
+</head>
+<body>
+    <mapbox-map mapId="basicallydan.map-ql3x67r6">
+        <mapbox-marker lat="53.368582" lng="-1.428223"></mapbox-marker>
+    </mapbox-map>
+</body>
+</html>

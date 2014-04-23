@@ -1,0 +1,72 @@
+<!-- Import Polymer -->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!-- Import Mapbox Stuff -->
+<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
+
+<!-- Define inner elements -->
+<polymer-element name="mapbox-marker" attributes="lat lng">
+    <script>
+        Polymer('mapbox-marker', {
+            /* -- Attributes ------------------------------------------------ */
+            lat: 51.520707,
+            lng: -0.153809,
+
+            /* -- Lifecycle ------------------------------------------------- */
+            created: function() {
+                console.log('Creating a Mapbox Marker', this.getCoordinates());
+            },
+            /* -- Public Methods -------------------------------------------- */
+            getCoordinates: function() {
+                return [this.lat, this.lng];
+            }
+        });
+    </script>
+</polymer-element>
+
+<!-- Define custom element -->
+<polymer-element name="mapbox-map" attributes="mapId height width">
+    <template>
+        <style type="text/css">
+        :host {
+            display:block;
+        }
+        #map {
+            width:100%;
+            height:100%;
+        }
+        </style>
+        <div id="map"></div>
+    </template>
+    <script>
+        Polymer('mapbox-map', {
+            /* -- Attributes ------------------------------------------------ */
+            gfm: false,
+            lineBreak: false,
+
+            /* -- Lifecycle ------------------------------------------------- */
+            created: function() {
+                console.log('Creating a Mapbox Map');
+            },
+            ready: function() {
+                if (this.mapId) {
+                    console.log('Loading map with id', this.mapId);
+                }
+
+                this.map = L.mapbox.map(this.$.map, this.mapId)
+            },
+            /* -- Public Methods -------------------------------------------- */
+            addMarker: function(coordinates, properties) {
+                L.mapbox.featureLayer({
+                    type: 'Feature',
+                    geometry: {
+                        type: 'Point',
+                        coordinates: coordinates
+                    },
+                    properties: properties
+                }).addTo(map);
+            }
+        });
+    </script>
+</polymer-element>

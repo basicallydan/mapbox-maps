@@ -1,0 +1,30 @@
+{
+  "name": "mapbox-map",
+  "version": "0.0.1",
+  "authors": [
+    "Dan Hough <daniel.hough@gmail.com>"
+  ],
+  "description": "A set of Web Components to create Mapbox Maps on the web",
+  "keywords": [
+    "mapbox",
+    "maps",
+    "openstreetmap",
+    "leaflet",
+    "web",
+    "components"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/basicallydan/mapbox-map",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~0.2.2",
+    "leaflet": "~0.7.2"
+  }
+}
