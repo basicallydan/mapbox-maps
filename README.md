@@ -6,9 +6,12 @@ Totally unfinished.
 
 * Make a map, and style it
 * Set a Mapbox Map ID for it
+* Markers in markup
 
 ## Todo:
 
-* Markers in markup
+* More interesting markers with different properties
+* Draggable markers
+* Other layery things
 
 [Watch the magic happen](https://basicallydan.github.io/mapbox-map)

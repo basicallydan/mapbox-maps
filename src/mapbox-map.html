@@ -10,12 +10,18 @@
     <script>
         Polymer('mapbox-marker', {
             /* -- Attributes ------------------------------------------------ */
-            lat: 51.520707,
-            lng: -0.153809,
+            // lat: 51.5258,
+            // lng: -0.0871,
 
             /* -- Lifecycle ------------------------------------------------- */
-            created: function() {
+            ready: function () {
                 console.log('Creating a Mapbox Marker', this.getCoordinates());
+            },
+            attached: function () {
+                this.async(function () {
+                    // console.log('Async: Parent node\'s addMarker method is is', this.parentNode.addMarker);
+                    this.parentNode.addMarker(this.getCoordinates(), { title: this.title })
+                });
             },
             /* -- Public Methods -------------------------------------------- */
             getCoordinates: function() {
@@ -38,12 +44,13 @@
         }
         </style>
         <div id="map"></div>
+        <content id="content"></content>
     </template>
     <script>
         Polymer('mapbox-map', {
             /* -- Attributes ------------------------------------------------ */
-            gfm: false,
-            lineBreak: false,
+            // lat: 51.5258,
+            // lng: -0.0871,
 
             /* -- Lifecycle ------------------------------------------------- */
             created: function() {
@@ -54,18 +61,21 @@
                     console.log('Loading map with id', this.mapId);
                 }
 
-                this.map = L.mapbox.map(this.$.map, this.mapId)
+                this.map = L.mapbox.map(this.$.map, this.mapId);
+                this.map.setView([this.lat, this.lng], 6);
             },
             /* -- Public Methods -------------------------------------------- */
             addMarker: function(coordinates, properties) {
+                console.log('Adding a marker at', coordinates);
                 L.mapbox.featureLayer({
                     type: 'Feature',
                     geometry: {
                         type: 'Point',
-                        coordinates: coordinates
+                        // GeoJSON uses long, lat rather than lat, long
+                        coordinates: coordinates.reverse()
                     },
                     properties: properties
-                }).addTo(map);
+                }).addTo(this.map);
             }
         });
     </script>
